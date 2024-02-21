@@ -7,11 +7,11 @@ public class Main extends JFrame {
     private static final int HEIGHT = 600;
 
     public Main() {
-        super("Wordle");
+        super("WORDLE");
         setSize(WIDTH, HEIGHT);
         Game play = new Game();
         ((Component) play).setFocusable(true);
-        setBackground(Color.white);
+        setBackground(new Color(54, 59, 66));
         getContentPane().add(play);
 
         setVisible(true);
