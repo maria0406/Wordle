@@ -2,21 +2,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Array;
 
-public class Game extends JPanel implements Runnable, KeyListener, MouseListener {
+public class Game extends JPanel implements Runnable {
     private BufferedImage back;
-    private Word[][] gameboard;
-    private int row, col;
 
+    // Objects
+    private Borad board;
+    private Word word;
+
+    // Colors
+    Color TEXT_1 = new Color(255, 255, 255);
 
     public Game() {
         back = null;
-        row = 6;
-        col = 5;
-        gameboard = setGameBoard();
+        word = new Word();
+        board = new Borad();
+        board.setWord(word.getRandomWord());
     }
-    
+
     public void run() {
         try {
             while (true) {
@@ -33,63 +36,21 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
             back = (BufferedImage) (createImage(getWidth(), getHeight()));
         }
         Graphics g2d = back.createGraphics();
-    
-    }
-    private Word[][] setGameBoard() {
-        // TODO Auto-generated method stub
-          for (int i = 0; i < col; i++) {
-            for (int j = 0; j < row; j++) {
-                gameboard[700+(i*100)][100+(j*100)];
+        g2d.clearRect(0, 0, getSize().width, getSize().height);
 
+        g2d.setFont(new Font("consolas", Font.PLAIN, 20));
+        g2d.setColor(TEXT_1);
+
+        g2d.drawString("Trent's WORDLE", 20, 30);
+        g2d.drawString("Word: " + board.getWord().toUpperCase(), 20, 60);
+
+        for (int i = 0; i < board.getMaxatts(); i++) {
+            for (int j = 0; j < board.getLength(); j++) {
+                g2d.drawRect(j * 70 + 50, i * 70 + 100, 60, 60);
             }
         }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
+        twoDgraph.drawImage(back, 0, 0, null);
     }
 
 }
