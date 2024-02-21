@@ -38,10 +38,10 @@ public class Game extends JPanel implements Runnable {
         Graphics g2d = back.createGraphics();
         g2d.clearRect(0, 0, getSize().width, getSize().height);
 
-        g2d.setFont(new Font("consolas", Font.PLAIN, 20));
+        g2d.setFont(new Font("Fira Code", Font.PLAIN, 20));
         g2d.setColor(TEXT_1);
 
-        g2d.drawString("Trent's WORDLE", 20, 30);
+        g2d.drawString("Wordle", 20, 30);
         g2d.drawString("Word: " + board.getWord().toUpperCase(), 20, 60);
 
         for (int i = 0; i < board.getMaxatts(); i++) {

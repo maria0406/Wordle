@@ -11,7 +11,7 @@ public class Main extends JFrame {
         setSize(WIDTH, HEIGHT);
         Game play = new Game();
         ((Component) play).setFocusable(true);
-        setBackground(new Color(54, 59, 66));
+        setBackground(Color.BLACK);
         getContentPane().add(play);
 
         setVisible(true);
